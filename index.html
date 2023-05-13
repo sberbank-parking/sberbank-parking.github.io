@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <link rel="shortcut icon" type="image/svg" sizes="120x120" href="src/image/favicon.svg">
+  <title>ВСП</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+  <script>
+    L_NO_TOUCH = false;
+    L_DISABLE_3D = false;
+  </script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css" /> -->
+  <link rel="stylesheet" href="/src/css/required styles.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="src/css/style.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <script src="src/js/markers.js"></script>
+  <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+  <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+
+    <div class="filter">
+      <div class="filter-block">
+        <div class="filter-title">Поиск ВСП&nbsp;</div>
+        <input id="id" class="filter-input" placeholder="№ ВСП" autocomplete="off" />
+      </div>
+
+      <div class="filter-block">
+        <!-- <label for="address">Адрес</label> -->
+        <div class="filter-title">Адрес&nbsp;</div>
+        <input id="address" class="filter-input" placeholder="г.Москва, Кутузовский проспект, 32" autocomplete="off" />
+      </div>
+
+      <div class="filter-block">
+        <div class="filter-title">Региональный банк&nbsp;</div>
+        <div class="filter-column">
+          <label>
+            <input type="checkbox" class="region" value="18">
+            Байкальский
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="42">
+            Волго-Вятский
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="70">
+            Дальневосточный
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="38">
+            Московский
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="54">
+            Поволжский
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="55">
+            Северо-Западный
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="44">
+            Северо-Западный
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="40">
+            Среднерусский
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="16">
+            Уральский
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="13">
+            Центрально-Черноземный
+          </label>
+          <label>
+            <input type="checkbox" class="region" value="52">
+            Юго-Западный
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <div class="filter-title">Тип&nbsp;</div>
+        <div class="filter-column">
+          <label>
+            <input type="checkbox" class="type" name="bo" value="БО">
+            БО
+          </label>
+          <label>
+            <input type="checkbox" class="type" name="oo" value="ОО">
+            ОО
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <div class="filter-row">
+          <div class="filter-title">Хранилище ценностей<br />клиентов&nbsp;</div>
+          <label class="switch">
+            <input id="xck" type="checkbox" class="filter-checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <div class="filter-title">Проверены за период&nbsp;</div>
+        <!-- <label for="period">Проверены за период</label> -->
+        <div class="filter-row">
+          <select id="quarter">
+            <option>1 квартал</option>
+            <option>2 квартал</option>
+            <option>3 квартал</option>
+            <option>4 квартал</option>
+          </select>
+          <select id="year">
+            <option>2023 год</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <div class="filter-title">Сумма под риском&nbsp;</div>
+        <!-- <label for="price">Сумма под риском</label> -->
+        <div class="filter-row">
+          <input id="minRisk" type="number" class="filter-input" placeholder="от 0" autocomplete="off">
+          <input id="maxRisk" type="number" class="filter-input" placeholder="до 10000" autocomplete="off">
+        </div>
+        <!--<div id="slider">
+          <div class="slider">
+            <div class="progress"></div>
+          </div>
+          <div class="range-input">
+            <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+            <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </div>
+
+  <div id="main">
+    <!-- <div id="filter-button-shadow"></div> -->
+    <button id="filter-button" onclick="openFilter()">
+      <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M175 419L338 256L175 93" stroke="black" stroke-width="24" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="info-container">
+      <!--<div class="info-text">
+      </div>-->
+    </div>
+    <div class="folium-map" id="map"></div>
+  </div>
+
+  <script>
+    function openFilter() {
+      const filterMenu = document.getElementById("mySidebar");
+      if (filterMenu.style.display === "none") {
+        document.getElementById("main").style.marginLeft = "320px";
+        console.log(document.getElementById("main").style.width);
+        document.getElementById("mySidebar").style.width = "320px";
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("filter-button").style.transform = 'rotate(180deg)';
+      } else {
+        document.getElementById("main").style.marginLeft = "0px";
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("filter-button").style.transform = 'rotate(0deg)';
+      }
+    }
+  </script>
+  <script src="src/js/map.js" />
+</body>
+
+</html>
