@@ -9,7 +9,7 @@ body {
 }
 
 @font-face {
-    font-family: SBSans;
+    font-family: SBSansDisplay-Regular;
     font-weight: 400;
     src: url(./src/fonts/SBSansDisplay-Regular.ttf);
 }
