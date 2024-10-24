@@ -11,13 +11,13 @@ body {
 @font-face {
     font-family: SBSans;
     font-weight: 400;
-    src: url(./fonts/SBSansDisplay-Regular.ttf);
+    src: url(./src/fonts/SBSansDisplay-Regular.ttf);
 }
   
 @font-face {
     font-family: SBSans-Semibold;
     font-weight: 600;
-    src: url(./fonts/SBSans-Semibold.ttf);
+    src: url(./src/fonts/SBSans-Semibold.ttf);
 }
 a{
     text-decoration: none;
@@ -141,7 +141,7 @@ button {
 
 .accordion::after {
     content: '';
-    background: url(./img/Down.svg) no-repeat center;
+    background: url(./src/img/Down.svg) no-repeat center;
     width: 20px;
     height: 20px;
     transition: .4s;
